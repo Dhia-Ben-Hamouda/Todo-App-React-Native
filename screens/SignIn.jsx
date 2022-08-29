@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
 import img from "../images/illustration.png";
 import { FontAwesome } from "@expo/vector-icons";
-import { TextInput , Keyboard } from "react-native";
+import { TextInput, Keyboard , ScrollView } from "react-native";
 import { TouchableWithoutFeedback } from "react-native";
 
 export default function () {
@@ -16,17 +16,21 @@ export default function () {
     })
   }, [])
 
-  function pressHandler()
-  {
+  function pressHandler() {
     Keyboard.dismiss();
+  }
+
+  function toggle()
+  {
+    navigation.navigate("SignUp");
   }
 
   return (
     <>
       <TouchableWithoutFeedback onPress={pressHandler} >
-        <View>
-          <View className="h-[140px] w-full relative" >
-            <View className="bg-[#00B0FF] h-[280px] w-[280px] rounded-full absolute top-[-140px] left-[-140px]  ">
+        <ScrollView>
+          <View className="h-[130px] w-full relative" >
+            <View className="bg-[#00B0FF] h-[260px] w-[260px] rounded-full absolute top-[-130px] left-[-130px]  ">
 
             </View>
           </View>
@@ -35,15 +39,43 @@ export default function () {
               Welcome Back !
             </Text>
             <Image source={img} className="scale-[0.8] mb-4" />
-            <View className="bg-[white] flex flex-row py-4 px-6 w-full rounded-full">
+            <View className="mb-4 shadow bg-[white] flex flex-row py-3 px-6 w-full rounded-full">
               <FontAwesome name="user" color={"#777"} size={25} />
-              <TextInput 
-                className="flex-1 ml-4" 
+              <TextInput
+                className="flex-1 ml-4"
                 placeholder="Enter email..."
               />
             </View>
+            <View className="mb-2 shadow bg-[white] flex flex-row py-3 px-6 w-full rounded-full">
+              <FontAwesome name="lock" color={"#777"} size={25} />
+              <TextInput
+                className="flex-1 ml-4"
+                placeholder="Enter password..."
+                secureTextEntry={true}
+              />
+            </View>
+            <View className="w-full py-2 mb-2" >
+              <Text className="text-right font-bold text-[#00b0ff]" >
+                Forgot password ?
+              </Text>
+            </View>
+            <TouchableOpacity className="mb-3 w-full">
+              <View className="bg-[#00B0FF] w-full p-3 rounded-full flex items-center justify-center" >
+                <Text className="text-white font-bold text-lg" >
+                  Sign in
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <View className="flex flex-row mb-4">
+              <Text className="text-[#777] font-bold" >
+                Don't have an account ?
+              </Text>
+              <Text className="ml-1 text-[#00b0ff] font-bold" onPress={toggle}>
+                Sign up !
+              </Text>
+            </View>
           </View>
-        </View>
+        </ScrollView>
       </TouchableWithoutFeedback>
     </>
   )
