@@ -13,9 +13,9 @@ export default function(){
     <NavigationContainer>
       <TailwindProvider>
         <Stack.Navigator>
-          <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="LandingPage" component={LandingPage} />
           <Stack.Screen name="SignIn" component={SignIn} />
+          <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="Home" component={Home} />
         </Stack.Navigator>
       </TailwindProvider>
