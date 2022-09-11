@@ -78,7 +78,7 @@ export default function () {
               </View>
               <TouchableOpacity className="w-full mt-4">
                 <View className="bg-[#00B0FF] p-4 flex justify-center items-center rounded-full">
-                  <Text className="text-white">
+                  <Text className="text-white text-lg font-bold">
                     Sign Up
                   </Text>
                 </View>

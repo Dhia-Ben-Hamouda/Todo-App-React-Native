@@ -2,6 +2,7 @@ import React from "react";
 import { View, Image, TouchableOpacity, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
+import { useState } from "react";
 import img from "../images/illustration.png";
 import { FontAwesome } from "@expo/vector-icons";
 import { TextInput, Keyboard , ScrollView } from "react-native";
@@ -23,6 +24,19 @@ export default function () {
   function toggle()
   {
     navigation.navigate("SignUp");
+  }
+
+  async function submitHandler()
+  {
+    const response = await fetch("http://localhost:5000/auth/signIn",{
+      method:"POST",
+      header:{
+        "content-type":"application/json"
+      },
+      body: JSON.stringify({
+
+      })
+    })
   }
 
   return (
@@ -59,7 +73,7 @@ export default function () {
                 Forgot password ?
               </Text>
             </View>
-            <TouchableOpacity className="mb-3 w-full">
+            <TouchableOpacity className="mb-3 w-full" onPress={submitHandler}>
               <View className="bg-[#00B0FF] w-full p-3 rounded-full flex items-center justify-center" >
                 <Text className="text-white font-bold text-lg" >
                   Sign in
